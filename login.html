@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - BrightFuture School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-10 rounded-xl shadow-md w-full max-w-md">
+        <h1 class="text-3xl font-bold text-indigo-700 text-center mb-6">Login</h1>
+
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 mb-1">Username</label>
+                <input type="text" id="username" placeholder="Enter username" 
+                    class="w-full p-3 border rounded-lg" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 mb-1">Password</label>
+                <input type="password" id="password" placeholder="Enter password" 
+                    class="w-full p-3 border rounded-lg" required>
+            </div>
+
+            <button type="submit" 
+                    class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition">
+                Login
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // Sample credentials
+        const users = {
+            student1: { password: "password123", role: "student" },
+            student2: { password: "pass456", role: "student" },
+            teacher1: { password: "teach123", role: "teacher" },
+            teacher2: { password: "teach456", role: "teacher" }
+        };
+
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if(users[username] && users[username].password === password) {
+                const role = users[username].role;
+
+                // Save login session (optional)
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("role", role);
+
+                if(role === "student") {
+                    window.location.href = "student.html";
+                } else if(role === "teacher") {
+                    window.location.href = "teacher.html";
+                }
+            } else {
+                alert("Invalid username or password!");
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Page Background */
+        body {
+            background-color: #f4f6f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR (same as home page) -->
+    <nav class="bg-indigo-600 text-white p-4 shadow-md flex items-center justify-between">
+
+        <!-- LEFT : LOGO + NAME -->
+        <div class="flex items-center gap-3 cursor-pointer">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" 
+                 alt="School Logo" class="w-10 h-10 rounded-full bg-white p-1">
+            <span class="text-xl font-bold">BrightFuture School</span>
+        </div>
+
+        <!-- CENTER NAV -->
+        <div class="flex gap-6 text-lg font-semibold">
+            <a href="index.html" class="hover:text-gray-200">Home</a>
+            <a href="student.html" class="hover:text-gray-200">Student</a>
+            <a href="teacher.html" class="hover:text-gray-200">Teacher</a>
+            <a href="about.html" class="hover:text-gray-200">About</a>
+            <a href="contact.html" class="hover:text-gray-200">Contact</a>
+            <a href="login.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
+                    class="w-10 h-10 rounded-full bg-white p-1 shadow cursor-pointer">
+            </a>
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="p-8 max-w-6xl mx-auto">
+
+        <!-- Page Heading -->
+        <h1 class="text-4xl font-bold text-indigo-700 text-center mb-6">
+            📘 Student Dashboard
+        </h1>
+
+        <!-- Student Table -->
+        <div class="bg-white p-6 rounded-xl shadow">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Student Details</h2>
+
+            <table class="w-full border-collapse">
+                <tr class="bg-indigo-500 text-white">
+                    <th class="p-3 border">ID</th>
+                    <th class="p-3 border">Name</th>
+                    <th class="p-3 border">Department</th>
+                    <th class="p-3 border">Year</th>
+                    <th class="p-3 border">Gender</th>
+                    <th class="p-3 border">Attendance %</th>
+                    <th class="p-3 border">CGPA</th>
+                </tr>
+
+                <tr class="text-center">
+                    <td class="p-3 border">ST001</td>
+                    <td class="p-3 border">Aditi Sharma</td>
+                    <td class="p-3 border">CSE</td>
+                    <td class="p-3 border">1st</td>
+                    <td class="p-3 border">F</td>
+                    <td class="p-3 border">92%</td>
+                    <td class="p-3 border">8.5</td>
+                </tr>
+
+                <tr class="text-center">
+                    <td class="p-3 border">ST002</td>
+                    <td class="p-3 border">Rahul Verma</td>
+                    <td class="p-3 border">ECE</td>
+                    <td class="p-3 border">2nd</td>
+                    <td class="p-3 border">M</td>
+                    <td class="p-3 border">85%</td>
+                    <td class="p-3 border">7.9</td>
+                </tr>
+
+                <tr class="text-center">
+                    <td class="p-3 border">ST003</td>
+                    <td class="p-3 border">Neha Singh</td>
+                    <td class="p-3 border">IT</td>
+                    <td class="p-3 border">3rd</td>
+                    <td class="p-3 border">F</td>
+                    <td class="p-3 border">95%</td>
+                    <td class="p-3 border">9.1</td>
+                </tr>
+
+                <tr class="text-center">
+                    <td class="p-3 border">ST004</td>
+                    <td class="p-3 border">Karan Patel</td>
+                    <td class="p-3 border">ME</td>
+                    <td class="p-3 border">4th</td>
+                    <td class="p-3 border">M</td>
+                    <td class="p-3 border">76%</td>
+                    <td class="p-3 border">6.8</td>
+                </tr>
+
+            </table>
+            <tbody id="studentTableBody"></tbody>
+
+        </div>
+
+        <!-- CHARTS SECTION -->
+        <h2 class="text-2xl font-semibold text-indigo-600 mt-10 mb-4">Student Statistics</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Department Bar Chart -->
+            <div class="bg-white p-4 rounded-xl shadow h-72">
+                <canvas id="deptChart"></canvas>
+            </div>
+
+            <!-- Gender Pie Chart -->
+            <div class="bg-white p-4 rounded-xl shadow h-72">
+                <canvas id="genderChart"></canvas>
+            </div>
+
+            <!-- CGPA Line Chart -->
+            <div class="bg-white p-4 rounded-xl shadow h-72">
+                <canvas id="cgpaChart"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white text-center py-3 mt-10">
+        © 2025 Student Management System | All Rights Reserved
+    </footer>
+
+
+
+    <!-- CHART JS SCRIPT -->
+    <script>
+        // Department BAR Chart
+        new Chart(document.getElementById("deptChart"), {
+            type: "bar",
+            data: {
+                labels: ["CSE", "ECE", "IT", "ME"],
+                datasets: [{
+                    label: "Students",
+                    data: [2, 1, 1, 1],
+                    backgroundColor: ["#4F46E5", "#3B82F6", "#F97316", "#8B5CF6"]
+                }]
+            }
+        });
+
+        // Gender PIE Chart
+        new Chart(document.getElementById("genderChart"), {
+            type: "pie",
+            data: {
+                labels: ["Male", "Female"],
+                datasets: [{
+                    data: [2, 3],
+                    backgroundColor: ["#3B82F6", "#EC4899"]
+                }]
+            }
+        });
+
+        // CGPA LINE Chart
+        new Chart(document.getElementById("cgpaChart"), {
+            type: "line",
+            data: {
+                labels: ["Aditi", "Rahul", "Neha", "Karan"],
+                datasets: [{
+                    label: "CGPA",
+                    data: [8.5, 7.9, 9.1, 6.8],
+                    borderColor: "#F87171",
+                    tension: 0.3
+                }]
+            }
+        });
+
+        function loadStudentTable() {
+            let students = JSON.parse(localStorage.getItem("students")) || [];
+            let tableBody = document.getElementById("studentTableBody");
+            tableBody.innerHTML = "";
+
+            students.forEach(s => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${s.name}</td>
+                        <td>${s.roll}</td>
+                        <td>${s.cgpa}</td>
+                    </tr>
+                `;
+            });
+        }
+
+    </script>
+
+
+</body>
+</html>

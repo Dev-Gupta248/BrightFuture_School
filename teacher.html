@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Dashboard</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR (same on all pages) -->
+    <nav class="bg-indigo-600 text-white p-4 flex justify-between items-center shadow">
+        
+        <!-- LEFT LOGO -->
+        <div class="flex items-center gap-3">
+            <img src="https://img.freepik.com/premium-vector/school-logo-white-background_917213-255798.jpg"
+                 class="w-12 rounded-full bg-white p-1">
+            <span class="text-xl font-bold">BrightFuture School</span>
+        </div>
+
+        <!-- CENTER NAVIGATION -->
+        <div class="hidden md:flex gap-6 text-lg font-semibold">
+            <a href="index.html" class="hover:text-yellow-300">Home</a>
+            <a href="about.html" class="hover:text-yellow-300">About</a>
+            <a href="student.html" class="hover:text-yellow-300">Student</a>
+            <a href="teacher.html" class="hover:text-yellow-300">Teacher</a>
+            <a href="contact.html" class="hover:text-yellow-300">Contact</a>
+            <a href="login.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
+                     class="w-10 rounded-full bg-white p-1">
+            </a>
+        </div>
+
+
+    </nav>
+
+
+
+    <!-- MAIN CONTENT -->
+    <div class="max-w-6xl mx-auto p-8">
+
+        <h1 class="text-4xl font-bold text-indigo-700 text-center mb-6">
+            👨‍🏫 Teacher Dashboard
+        </h1>
+
+        <!-- Add Student Section -->
+        <div class="bg-white p-6 rounded-xl shadow mb-8">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Add / Update Student</h2>
+
+            <form id="studentForm" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                <input type="text" id="id" placeholder="Student ID"
+                       class="border p-3 rounded-lg" required>
+
+                <input type="text" id="name" placeholder="Student Name"
+                       class="border p-3 rounded-lg" required>
+
+                <input type="text" id="department" placeholder="Department (CSE, ECE...)"
+                       class="border p-3 rounded-lg" required>
+
+                <input type="text" id="year" placeholder="Year (1st, 2nd...)"
+                       class="border p-3 rounded-lg" required>
+
+                <input type="text" id="gender" placeholder="Gender (M/F)"
+                       class="border p-3 rounded-lg" required>
+
+                <input type="number" id="attendance" placeholder="Attendance %"
+                       class="border p-3 rounded-lg" required>
+
+                <input type="number" step="0.1" id="cgpa" placeholder="CGPA"
+                       class="border p-3 rounded-lg" required>
+
+                <button class="bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition md:col-span-3">
+                    Add / Update Student
+                </button>
+
+            </form>
+        </div>
+
+
+        <!-- Student Table Section -->
+        <div class="bg-white p-6 rounded-xl shadow">
+            <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Student Records</h2>
+
+            <table class="w-full border-collapse" id="studentTable">
+                <tr class="bg-indigo-500 text-white">
+                    <th class="p-3 border">ID</th>
+                    <th class="p-3 border">Name</th>
+                    <th class="p-3 border">Department</th>
+                    <th class="p-3 border">Year</th>
+                    <th class="p-3 border">Gender</th>
+                    <th class="p-3 border">Attendance %</th>
+                    <th class="p-3 border">CGPA</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white text-center py-3 mt-10">
+        © 2025 Student Management System | All Rights Reserved
+    </footer>
+
+
+
+    <!-- JAVASCRIPT: Add/Update Student -->
+    <script>
+        const form = document.getElementById("studentForm");
+        const table = document.getElementById("studentTable");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const id = document.getElementById("id").value;
+            const name = document.getElementById("name").value;
+            const dept = document.getElementById("department").value;
+            const year = document.getElementById("year").value;
+            const gender = document.getElementById("gender").value;
+            const attendance = document.getElementById("attendance").value;
+            const cgpa = document.getElementById("cgpa").value;
+
+            // Create new row
+            const row = `
+                <tr class="text-center">
+                    <td class="p-3 border">${id}</td>
+                    <td class="p-3 border">${name}</td>
+                    <td class="p-3 border">${dept}</td>
+                    <td class="p-3 border">${year}</td>
+                    <td class="p-3 border">${gender}</td>
+                    <td class="p-3 border">${attendance}%</td>
+                    <td class="p-3 border">${cgpa}</td>
+                </tr>
+            `;
+
+            table.innerHTML += row;
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>

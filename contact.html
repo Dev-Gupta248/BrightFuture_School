@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - BrightFuture School</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="bg-indigo-600 text-white p-4 shadow-md flex items-center justify-between">
+
+        <!-- LEFT : LOGO + NAME -->
+        <div class="flex items-center gap-3 cursor-pointer">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" 
+                 alt="School Logo" class="w-10 h-10 rounded-full bg-white p-1">
+            <span class="text-xl font-bold">BrightFuture School</span>
+        </div>
+
+        <!-- CENTER NAV -->
+        <div class="flex gap-6 text-lg font-semibold">
+            <a href="index.html" class="hover:text-gray-200">Home</a>
+            <a href="student.html" class="hover:text-gray-200">Student</a>
+            <a href="teacher.html" class="hover:text-gray-200">Teacher</a>
+            <a href="about.html" class="hover:text-gray-200">About</a>
+            <a href="contact.html" class="hover:text-gray-200">Contact</a>
+            <a href="login.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
+                     class="w-10 h-10 rounded-full bg-white p-1 shadow cursor-pointer">
+            </a>
+        </div>
+
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="p-8 max-w-6xl mx-auto space-y-8">
+
+        <h1 class="text-4xl font-bold text-indigo-700 text-center mb-4">Contact Us</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Contact Form -->
+            <div class="card">
+                <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Send a Message</h2>
+                <form>
+                    <label class="block mb-2 text-gray-700">Name</label>
+                    <input type="text" class="w-full mb-4 p-3 border rounded-lg" placeholder="Your Name" required>
+
+                    <label class="block mb-2 text-gray-700">Email</label>
+                    <input type="email" class="w-full mb-4 p-3 border rounded-lg" placeholder="Your Email" required>
+
+                    <label class="block mb-2 text-gray-700">Message</label>
+                    <textarea class="w-full mb-4 p-3 border rounded-lg" rows="5" placeholder="Your Message" required></textarea>
+
+                    <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- School Info -->
+            <div class="card">
+                <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Our Information</h2>
+                <p class="text-gray-700 mb-3"><strong>Address:</strong> 123 BrightFuture Road, City, State, India</p>
+                <p class="text-gray-700 mb-3"><strong>Phone:</strong> +91 9876543210</p>
+                <p class="text-gray-700 mb-3"><strong>Email:</strong> info@brightfutureschool.com</p>
+
+                    <h3 class="text-xl font-semibold text-indigo-600 mt-4 mb-2">Find Us on Map</h3>
+
+                    <iframe class="w-full h-64 rounded-lg" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.872907847072!2d75.78107931500934!3d26.912434983180623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5d3f1f1f1f1%3A0x123456789abcdef0!2sRajasthan%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                        style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white text-center py-3 mt-10">
+        © 2025 BrightFuture School | All Rights Reserved
+    </footer>
+
+</body>
+</html>
